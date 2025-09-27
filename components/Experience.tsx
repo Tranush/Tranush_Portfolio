@@ -50,8 +50,53 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            x: [0, 300, -300, 0],
+            y: [0, -150, 150, 0],
+            rotate: [0, 360, 720],
+            scale: [1, 1.5, 1]
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -200, 200, 0],
+            y: [0, 100, -100, 0],
+            rotate: [360, 0, -360],
+            scale: [1.2, 1, 1.2]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, 150, -150, 0],
+            y: [0, -80, 80, 0],
+            rotate: [0, 180, 360],
+            scale: [1, 1.3, 1]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-full blur-2xl"
+        />
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,10 +104,32 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Professional Experience</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A journey through diverse roles, from startup founder to enterprise engineer
-          </p>
+          <motion.h2 
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-6xl font-black text-white mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent bg-[length:200%_100%]"
+          >
+            PROFESSIONAL EXPERIENCE
+          </motion.h2>
+          <motion.p 
+            animate={{
+              color: ["#ffffff", "#60a5fa", "#a78bfa", "#ffffff"]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-2xl text-white/90 max-w-3xl mx-auto font-bold"
+          >
+            JOURNEY THROUGH DIVERSE ROLES: STARTUP FOUNDER TO ENTERPRISE ENGINEER
+          </motion.p>
         </motion.div>
 
         <div className="space-y-12">
@@ -73,28 +140,32 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/20 p-8 hover:bg-white/20 transition-all duration-300"
             >
               <div className="grid lg:grid-cols-3 gap-8">
                 {/* Company Info */}
                 <div className="lg:col-span-1">
                   <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
+                    <motion.div 
+                      whileHover={{ rotate: 360 }}
+                      className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center"
+                    >
                       <FaBuilding className="text-white text-2xl" />
-                    </div>
+                    </motion.div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">{exp.company}</h3>
-                      <p className="text-lg font-semibold text-primary-600">{exp.position}</p>
+                      <h3 className="text-2xl font-bold text-white">{exp.company}</h3>
+                      <p className="text-lg font-semibold text-cyan-400">{exp.position}</p>
                     </div>
                   </div>
                   
                   <div className="space-y-2 mb-6">
-                    <div className="flex items-center text-gray-600">
-                      <FaCalendarAlt className="mr-2" />
+                    <div className="flex items-center text-white/70">
+                      <FaCalendarAlt className="mr-2 text-cyan-400" />
                       <span>{exp.duration}</span>
                     </div>
-                    <div className="flex items-center text-gray-600">
-                      <FaMapMarkerAlt className="mr-2" />
+                    <div className="flex items-center text-white/70">
+                      <FaMapMarkerAlt className="mr-2 text-cyan-400" />
                       <span>{exp.location}</span>
                     </div>
                   </div>
@@ -102,31 +173,48 @@ const Experience = () => {
 
                 {/* Description & Achievements */}
                 <div className="lg:col-span-2">
-                  <p className="text-gray-600 mb-6 leading-relaxed">{exp.description}</p>
+                  <motion.p 
+                    animate={{
+                      opacity: [0.8, 1, 0.8]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="text-white/80 mb-6 leading-relaxed"
+                  >
+                    {exp.description}
+                  </motion.p>
                   
                   <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3">Key Achievements:</h4>
+                    <h4 className="font-bold text-white mb-3">KEY ACHIEVEMENTS:</h4>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="w-2 h-2 bg-primary-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                          <span className="text-gray-600">{achievement}</span>
-                        </li>
+                        <motion.li 
+                          key={idx} 
+                          whileHover={{ x: 5, scale: 1.02 }}
+                          className="flex items-start"
+                        >
+                          <span className="w-2 h-2 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                          <span className="text-white/80">{achievement}</span>
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Technologies */}
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-3">Technologies Used:</h4>
+                    <h4 className="font-bold text-white mb-3">TECHNOLOGIES USED:</h4>
                     <div className="flex flex-wrap gap-2">
                       {exp.technologies.map((tech, idx) => (
-                        <span
+                        <motion.span
                           key={idx}
-                          className="px-3 py-1 bg-gradient-to-r from-primary-100 to-accent-100 text-primary-700 rounded-full text-sm font-medium"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-300 border border-cyan-400/30 rounded-full text-sm font-bold"
                         >
                           {tech}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                   </div>

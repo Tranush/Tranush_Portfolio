@@ -76,8 +76,39 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            x: [0, 200, -200, 0],
+            y: [0, -100, 100, 0],
+            rotate: [0, 180, 360],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -150, 150, 0],
+            y: [0, 80, -80, 0],
+            rotate: [360, 180, 0],
+            scale: [1.3, 1, 1.3]
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+        />
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -85,11 +116,32 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to collaborate, discuss opportunities, or just have a chat about technology? 
-            I'd love to hear from you!
-          </p>
+          <motion.h2 
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-6xl font-black text-white mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent bg-[length:200%_100%]"
+          >
+            GET IN TOUCH
+          </motion.h2>
+          <motion.p 
+            animate={{
+              color: ["#ffffff", "#8b5cf6", "#ec4899", "#ffffff"]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-2xl text-white/90 max-w-3xl mx-auto font-bold"
+          >
+            READY TO COLLABORATE, DISCUSS OPPORTUNITIES, OR CHAT ABOUT TECHNOLOGY?
+          </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">

@@ -81,8 +81,53 @@ const Publications = () => {
   ]
 
   return (
-    <section id="publications" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="publications" className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            x: [0, 180, -180, 0],
+            y: [0, -100, 100, 0],
+            rotate: [0, 360, 720],
+            scale: [1, 1.6, 1]
+          }}
+          transition={{
+            duration: 40,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -220, 220, 0],
+            y: [0, 110, -110, 0],
+            rotate: [360, 0, -360],
+            scale: [1.4, 1, 1.4]
+          }}
+          transition={{
+            duration: 32,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, 140, -140, 0],
+            y: [0, -70, 70, 0],
+            rotate: [0, 180, 360],
+            scale: [1, 1.5, 1]
+          }}
+          transition={{
+            duration: 26,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-full blur-2xl"
+        />
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,10 +135,32 @@ const Publications = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Publications & Research</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Contributing to the advancement of data engineering and AI through research and knowledge sharing
-          </p>
+          <motion.h2 
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-6xl font-black text-white mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent bg-[length:200%_100%]"
+          >
+            RESEARCH & PUBLICATIONS
+          </motion.h2>
+          <motion.p 
+            animate={{
+              color: ["#ffffff", "#60a5fa", "#a78bfa", "#ffffff"]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-2xl text-white/90 max-w-3xl mx-auto font-bold"
+          >
+            CONTRIBUTING TO ADVANCEMENT OF DATA ENGINEERING & AI THROUGH RESEARCH
+          </motion.p>
         </motion.div>
 
         {/* Stats */}

@@ -72,8 +72,53 @@ const Startups = () => {
   ]
 
   return (
-    <section id="startups" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="startups" className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            x: [0, 200, -200, 0],
+            y: [0, -120, 120, 0],
+            rotate: [0, 180, 360, 540],
+            scale: [1, 1.3, 1]
+          }}
+          transition={{
+            duration: 45,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-20 left-20 w-88 h-88 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -160, 160, 0],
+            y: [0, 80, -80, 0],
+            rotate: [360, 180, 0, -180],
+            scale: [1.2, 1, 1.2]
+          }}
+          transition={{
+            duration: 38,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, 100, -100, 0],
+            y: [0, -50, 50, 0],
+            rotate: [0, 90, 180, 270, 360],
+            scale: [1, 1.4, 1]
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-full blur-2xl"
+        />
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,10 +126,32 @@ const Startups = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Entrepreneurial Journey</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Building innovative solutions and leading teams to create meaningful impact in the tech industry
-          </p>
+          <motion.h2 
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-6xl font-black text-white mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent bg-[length:200%_100%]"
+          >
+            ENTREPRENEURIAL VENTURES
+          </motion.h2>
+          <motion.p 
+            animate={{
+              color: ["#ffffff", "#60a5fa", "#a78bfa", "#ffffff"]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-2xl text-white/90 max-w-3xl mx-auto font-bold"
+          >
+            BUILDING INNOVATIVE SOLUTIONS & LEADING TEAMS TO CREATE MEANINGFUL IMPACT
+          </motion.p>
         </motion.div>
 
         {/* Stats */}
