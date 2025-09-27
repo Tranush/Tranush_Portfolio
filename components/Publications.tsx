@@ -81,7 +81,7 @@ const Publications = () => {
   ]
 
   return (
-    <section id="publications" className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+    <section id="publications" className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden border-0 -mt-1">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div

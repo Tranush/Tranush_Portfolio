@@ -6,7 +6,7 @@ import { HiMail } from 'react-icons/hi'
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen bg-black text-white flex items-center relative overflow-hidden">
+    <section id="home" className="min-h-screen bg-black text-white flex items-center relative overflow-hidden border-0">
       {/* Nike-style animated background */}
       <div className="absolute inset-0">
         <motion.div
