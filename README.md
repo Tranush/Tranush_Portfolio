@@ -10,6 +10,7 @@ A modern, responsive portfolio website built with Next.js, React, and Tailwind C
 - **SEO Optimized**: Built with Next.js for excellent SEO performance
 - **Fast Loading**: Optimized for speed and performance
 - **Accessible**: Built with accessibility best practices
+- **Live Deployment**: Currently deployed on Firebase Hosting
 
 ## 📋 Sections
 
@@ -29,7 +30,7 @@ A modern, responsive portfolio website built with Next.js, React, and Tailwind C
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Icons**: React Icons
-- **Deployment**: Vercel (recommended)
+- **Deployment**: Firebase Hosting
 
 ## 🚀 Getting Started
 
@@ -119,16 +120,38 @@ Replace placeholder images with your actual photos:
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### Firebase Hosting (Current Setup)
 
-1. **Connect your repository to Vercel**
-2. **Deploy automatically** on every push to main branch
+1. **Install Firebase CLI**
+   ```bash
+   npm install -g firebase-tools
+   ```
+
+2. **Login to Firebase**
+   ```bash
+   firebase login
+   ```
+
+3. **Initialize Firebase project**
+   ```bash
+   firebase init hosting
+   ```
+
+4. **Build and deploy**
+   ```bash
+   npm run build
+   firebase deploy
+   ```
+
+### Live URL
+- **Portfolio**: https://my-portfolio-85f7e.web.app
+- **Firebase Console**: https://console.firebase.google.com/project/my-portfolio-85f7e/overview
 
 ### Other Platforms
 
+- **Vercel**: Connect repository and deploy automatically
 - **Netlify**: Connect repository and deploy
 - **GitHub Pages**: Use GitHub Actions for deployment
-- **AWS S3**: Upload build files to S3 bucket
 
 ## 📱 Browser Support
 
@@ -167,6 +190,10 @@ portfolio/
 │   └── Startups.tsx
 ├── public/
 │   └── (your images)
+├── .firebase/
+│   └── hosting.b3V0.cache
+├── .firebaserc
+├── firebase.json
 ├── tailwind.config.js
 ├── next.config.js
 └── package.json
