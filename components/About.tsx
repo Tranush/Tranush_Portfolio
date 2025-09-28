@@ -13,9 +13,9 @@ const About = () => {
 
   const interests = [
     {
-      icon: FaCode,
-      title: 'Software Engineering',
-      description: 'Building scalable applications and systems'
+      icon: FaRocket,
+      title: 'Entrepreneurship',
+      description: 'Creating innovative solutions and startups'
     },
     {
       icon: FaDatabase,
@@ -28,14 +28,14 @@ const About = () => {
       description: 'Exploring the frontiers of artificial intelligence'
     },
     {
-      icon: FaRocket,
-      title: 'Entrepreneurship',
-      description: 'Creating innovative solutions and startups'
-    },
+      icon: FaCode,
+      title: 'Software Engineering',
+      description: 'Building scalable applications and systems'
+    }
   ]
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden border-0">
+    <section id="about" className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div

@@ -1,10 +1,12 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FaDownload, FaPlay, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { HiMail } from 'react-icons/hi'
 
 const Hero = () => {
+
   return (
     <section id="home" className="min-h-screen bg-black text-white flex items-center relative overflow-hidden border-0">
       {/* Nike-style animated background */}
@@ -20,7 +22,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-red-500 to-orange-500 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -33,7 +35,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-gray-500 to-gray-700 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -46,7 +48,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full blur-2xl"
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-gray-600 to-gray-800 rounded-full blur-2xl"
         />
       </div>
       
@@ -64,39 +66,18 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="text-6xl lg:text-8xl font-black text-white leading-tight"
+                  className="text-4xl lg:text-6xl font-bold text-white leading-tight text-center"
                 >
+                  I'm{' '}
                   <motion.span
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    whileHover={{ 
+                      scale: 1.1,
+                      rotate: [0, -5, 5, 0],
+                      transition: { duration: 0.3 }
                     }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent bg-[length:200%_100%]"
+                    className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
                   >
-                    Hey There!!!
-                  </motion.span>
-                  <br />
-                  <motion.span
-                    initial={{ opacity: 0, x: -100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="text-4xl lg:text-6xl font-bold text-white"
-                  >
-                    I'm{' '}
-                    <motion.span
-                      whileHover={{ 
-                        scale: 1.1,
-                        rotate: [0, -5, 5, 0],
-                        transition: { duration: 0.3 }
-                      }}
-                      className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
-                    >
-                      Tranush Kondapalli
-                    </motion.span>
+                    Tranush Kondapalli
                   </motion.span>
                 </motion.h1>
               
@@ -108,7 +89,7 @@ const Hero = () => {
               >
                 <motion.p
                   animate={{
-                    color: ["#ffffff", "#ff6b6b", "#4ecdc4", "#45b7d1", "#ffffff"]
+                    color: ["#ffffff", "#d1d5db", "#9ca3af", "#6b7280", "#ffffff"]
                   }}
                   transition={{
                     duration: 4,
@@ -126,8 +107,8 @@ const Hero = () => {
                   transition={{ delay: 0.8, duration: 1 }}
                   className="text-lg text-gray-300 max-w-2xl"
                 >
-                  Building the future of technology at <span className="text-yellow-400 font-bold">WALMART</span>. 
-                  Creating innovative solutions that scale to millions of users.
+                  Serial entrepreneur & data engineer building the future of technology. 
+                  Founded multiple startups, led engineering teams, and created solutions that scale to millions of users.
                 </motion.p>
               </motion.div>
             </div>
@@ -137,73 +118,64 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-6"
+              className="grid grid-cols-2 gap-4"
             >
+              <motion.a
+                href="#startups"
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotate: [0, -1, 1, 0],
+                  boxShadow: "0 10px 30px rgba(255, 255, 255, 0.2)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center gap-2 px-6 py-3 text-lg font-bold bg-white text-black rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300"
+              >
+                <FaDownload size={16} />
+                VIEW STARTUPS
+              </motion.a>
+              
+              <motion.a
+                href="#projects"
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotate: [0, 1, -1, 0],
+                  boxShadow: "0 10px 30px rgba(255, 255, 255, 0.2)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center gap-2 px-6 py-3 text-lg font-bold bg-transparent text-white rounded-full shadow-lg border-2 border-white hover:bg-white hover:text-black transition-all duration-300"
+              >
+                <FaPlay size={16} />
+                VIEW PROJECTS
+              </motion.a>
+              
+              <motion.a
+                href="#about"
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotate: [0, -1, 1, 0],
+                  boxShadow: "0 10px 30px rgba(255, 255, 255, 0.2)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center gap-2 px-6 py-3 text-lg font-bold bg-transparent text-white rounded-full shadow-lg border-2 border-white hover:bg-white hover:text-black transition-all duration-300"
+              >
+                <FaPlay size={16} />
+                VIEW INTRO
+              </motion.a>
+              
               <motion.a
                 href="/Tranush_Kondapalli_Resume.pdf"
                 download
                 whileHover={{ 
-                  scale: 1.1, 
-                  rotate: [0, -2, 2, 0],
-                  boxShadow: "0 20px 40px rgba(255, 0, 0, 0.4)"
+                  scale: 1.05, 
+                  rotate: [0, 1, -1, 0],
+                  boxShadow: "0 10px 30px rgba(255, 255, 255, 0.2)"
                 }}
-                whileTap={{ scale: 0.9 }}
-                animate={{
-                  boxShadow: [
-                    "0 0 0 rgba(255, 0, 0, 0)",
-                    "0 0 20px rgba(255, 0, 0, 0.3)",
-                    "0 0 0 rgba(255, 0, 0, 0)"
-                  ]
-                }}
-                transition={{
-                  boxShadow: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }
-                }}
-                className="flex items-center justify-center gap-3 px-10 py-4 text-xl font-black bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full shadow-2xl hover:from-red-600 hover:to-orange-600 transition-all duration-300 border-2 border-white/20"
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center gap-2 px-6 py-3 text-lg font-bold bg-white text-black rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300"
               >
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                >
-                  <FaDownload />
-                </motion.div>
+                <FaDownload size={16} />
                 DOWNLOAD RESUME
               </motion.a>
-              
-              <motion.button
-                whileHover={{ 
-                  scale: 1.1, 
-                  rotate: [0, 2, -2, 0],
-                  boxShadow: "0 20px 40px rgba(0, 255, 255, 0.4)"
-                }}
-                whileTap={{ scale: 0.9 }}
-                animate={{
-                  boxShadow: [
-                    "0 0 0 rgba(0, 255, 255, 0)",
-                    "0 0 20px rgba(0, 255, 255, 0.3)",
-                    "0 0 0 rgba(0, 255, 255, 0)"
-                  ]
-                }}
-                transition={{
-                  boxShadow: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }
-                }}
-                className="flex items-center justify-center gap-3 px-10 py-4 text-xl font-black bg-transparent text-white rounded-full shadow-2xl border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition-all duration-300"
-              >
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <FaPlay />
-                </motion.div>
-                WATCH INTRO
-              </motion.button>
             </motion.div>
 
             {/* Social Links */}
@@ -229,7 +201,7 @@ const Hero = () => {
                   y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
                   rotate: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="text-white hover:text-red-400 transition-colors duration-300"
+                className="text-white hover:text-gray-300 transition-colors duration-300"
                 aria-label="GitHub"
               >
                 <FaGithub size={32} />
@@ -251,7 +223,7 @@ const Hero = () => {
                   y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" },
                   rotate: { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="text-white hover:text-blue-400 transition-colors duration-300"
+                className="text-white hover:text-gray-300 transition-colors duration-300"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={32} />
@@ -273,7 +245,7 @@ const Hero = () => {
                   y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
                   rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="text-white hover:text-cyan-400 transition-colors duration-300"
+                className="text-white hover:text-gray-300 transition-colors duration-300"
                 aria-label="Twitter"
               >
                 <FaTwitter size={32} />
@@ -295,7 +267,7 @@ const Hero = () => {
                   y: { duration: 2.2, repeat: Infinity, ease: "easeInOut" },
                   rotate: { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="text-white hover:text-green-400 transition-colors duration-300"
+                className="text-white hover:text-gray-300 transition-colors duration-300"
                 aria-label="Email"
               >
                 <HiMail size={32} />
@@ -323,14 +295,14 @@ const Hero = () => {
               className="relative w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20"
             >
               {/* Nike-style animated background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-400 via-gray-600 to-gray-800">
                 <motion.div
                   animate={{
                     background: [
-                      "linear-gradient(45deg, #ff6b6b, #ffa500, #ffd700)",
-                      "linear-gradient(45deg, #4ecdc4, #45b7d1, #96ceb4)",
-                      "linear-gradient(45deg, #a8e6cf, #ffd3a5, #fdae6b)",
-                      "linear-gradient(45deg, #ff6b6b, #ffa500, #ffd700)"
+                      "linear-gradient(45deg, #9ca3af, #6b7280, #4b5563)",
+                      "linear-gradient(45deg, #6b7280, #4b5563, #374151)",
+                      "linear-gradient(45deg, #4b5563, #374151, #1f2937)",
+                      "linear-gradient(45deg, #9ca3af, #6b7280, #4b5563)"
                     ]
                   }}
                   transition={{
@@ -373,7 +345,7 @@ const Hero = () => {
                   
                   <motion.p
                     animate={{
-                      color: ["#ffffff", "#ff6b6b", "#4ecdc4", "#45b7d1", "#ffffff"]
+                      color: ["#ffffff", "#d1d5db", "#9ca3af", "#6b7280", "#ffffff"]
                     }}
                     transition={{
                       duration: 3,
@@ -425,7 +397,7 @@ const Hero = () => {
                   }}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
+                  <div className="w-4 h-4 bg-white rounded-full animate-pulse"></div>
                   <span className="text-sm font-bold text-white">LIVE</span>
                 </motion.div>
               </motion.div>
